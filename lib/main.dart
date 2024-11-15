@@ -12,23 +12,23 @@ import 'bloc/movie_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize window manager
-  await windowManager.ensureInitialized();
-
-  // Configure window options
-  WindowOptions windowOptions = const WindowOptions(
-    size: Size(1280, 720),
-    center: true,
-    backgroundColor: Colors.transparent,
-    skipTaskbar: false,
-    titleBarStyle: TitleBarStyle.normal,
-    title: 'Movie Desktop App',
-    minimumSize: Size(800, 600),  // Prevents window from being too small
-  );
-
-  await windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
-  });
+  // await windowManager.ensureInitialized();
+  //
+  // // Configure window options
+  // WindowOptions windowOptions = const WindowOptions(
+  //   size: Size(1280, 720),
+  //   center: true,
+  //   backgroundColor: Colors.transparent,
+  //   skipTaskbar: false,
+  //   titleBarStyle: TitleBarStyle.normal,
+  //   title: 'Movie Desktop App',
+  //   minimumSize: Size(800, 600),  // Prevents window from being too small
+  // );
+  //
+  // await windowManager.waitUntilReadyToShow(windowOptions, () async {
+  //   await windowManager.show();
+  //   await windowManager.focus();
+  // });
   runApp(const MyApp());
 }
 

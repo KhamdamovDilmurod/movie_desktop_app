@@ -40,6 +40,7 @@ dependencies:
   path_provider: ^2.1.5
   shared_preferences:
   window_manager: ^0.4.3
+  video_player:
 
 
   # The following adds the Cupertino Icons font to your application.

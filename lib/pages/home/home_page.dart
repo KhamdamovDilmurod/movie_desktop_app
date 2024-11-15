@@ -1,6 +1,5 @@
 
-import 'dart:math';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +35,9 @@ class HomePage extends StatelessWidget {
               },
             );
           } else if (state is MovieError) {
-            print(state.message);
+            if (kDebugMode) {
+              print(state.message);
+            }
             return Center(child: Text(state.message,));
           }
           return const SizedBox();
