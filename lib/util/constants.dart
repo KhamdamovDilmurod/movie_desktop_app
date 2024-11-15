@@ -1,0 +1,3 @@
+const String baseUrl = "https://api.themoviedb.org/3";
+const String apiKey = "d13a5b263c63ed67d628ce6ede416a9a";
+const String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMTNhNWIyNjNjNjNlZDY3ZDYyOGNlNmVkZTQxNmE5YSIsIm5iZiI6MTczMTUxNDUwNC4zMDM2MDcyLCJzdWIiOiI2NzM0YTA1YTNlODJiYTc5ZmNjZjJhOTIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.2aVXPX_ujhI4_hF86nWoWOzg7pBea9rirF4upzPjFgI";
