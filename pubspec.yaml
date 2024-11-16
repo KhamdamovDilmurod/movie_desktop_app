@@ -41,6 +41,10 @@ dependencies:
   shared_preferences:
   window_manager: ^0.4.3
   video_player:
+  video_player_win:
+    git:
+      url: https://github.com/jakky1/video_player_win.git
+      ref: master
   media_kit: ^1.1.11 # Primary package.
   media_kit_video: ^1.2.5 # For video rendering.
   media_kit_libs_video: ^1.0.5 # Native video dependencies.
