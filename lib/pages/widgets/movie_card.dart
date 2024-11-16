@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_desktop_app/pages/home/video_screen.dart';
 
 import '../../models/movie_model.dart';
+import '../media_screen.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -60,7 +61,7 @@ class MovieCard extends StatelessWidget {
   void openVideo(context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => VideoPlayerScreen(),
+        builder: (_) => MediaScreen(),
       ),
     );
   }

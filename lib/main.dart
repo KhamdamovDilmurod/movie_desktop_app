@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:movie_desktop_app/pages/home/home_page.dart';
 import 'package:movie_desktop_app/repository/movie_repository.dart';
 import 'package:movie_desktop_app/services/api_service.dart';
@@ -11,6 +12,8 @@ import 'bloc/movie_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Initialize media_kit
+  MediaKit.ensureInitialized();
   // Initialize window manager
   // await windowManager.ensureInitialized();
   //

@@ -60,104 +60,107 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       return const Center(child: CircularProgressIndicator());
     }
 
-    return GestureDetector(
-      onTap: _toggleControls,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Video
-          AspectRatio(
-            aspectRatio: _controller.value.aspectRatio,
-            child: VideoPlayer(_controller),
-          ),
+    return Scaffold(
+      appBar: AppBar(title: Text("Video"),),
+      body: GestureDetector(
+        onTap: _toggleControls,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // Video
+            AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
+            ),
 
-          // Controls overlay
-          if (_showControls)
-            Container(
-              color: Colors.black26,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  // Control buttons row
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Backward button
-                        IconButton(
-                          icon: const Icon(
-                            Icons.replay_10,
-                            color: Colors.white,
-                            size: 40.0,
+            // Controls overlay
+            if (_showControls)
+              Container(
+                color: Colors.black26,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    // Control buttons row
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Backward button
+                          IconButton(
+                            icon: const Icon(
+                              Icons.replay_10,
+                              color: Colors.white,
+                              size: 40.0,
+                            ),
+                            onPressed: _skipBackward,
                           ),
-                          onPressed: _skipBackward,
-                        ),
 
-                        const SizedBox(width: 20),
+                          const SizedBox(width: 20),
 
-                        // Play/Pause button
-                        IconButton(
-                          icon: Icon(
-                            _controller.value.isPlaying
-                                ? Icons.pause
-                                : Icons.play_arrow,
-                            color: Colors.white,
-                            size: 50.0,
-                          ),
-                          onPressed: () {
-                            setState(() {
+                          // Play/Pause button
+                          IconButton(
+                            icon: Icon(
                               _controller.value.isPlaying
-                                  ? _controller.pause()
-                                  : _controller.play();
-                            });
-                          },
-                        ),
-
-                        const SizedBox(width: 20),
-
-                        // Forward button
-                        IconButton(
-                          icon: const Icon(
-                            Icons.forward_10,
-                            color: Colors.white,
-                            size: 40.0,
+                                  ? Icons.pause
+                                  : Icons.play_arrow,
+                              color: Colors.white,
+                              size: 50.0,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _controller.value.isPlaying
+                                    ? _controller.pause()
+                                    : _controller.play();
+                              });
+                            },
                           ),
-                          onPressed: _skipForward,
+
+                          const SizedBox(width: 20),
+
+                          // Forward button
+                          IconButton(
+                            icon: const Icon(
+                              Icons.forward_10,
+                              color: Colors.white,
+                              size: 40.0,
+                            ),
+                            onPressed: _skipForward,
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Progress bar
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: VideoProgressIndicator(
+                        _controller,
+                        allowScrubbing: true,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 8.0,
                         ),
-                      ],
-                    ),
-                  ),
-
-                  // Progress bar
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0),
-                    child: VideoProgressIndicator(
-                      _controller,
-                      allowScrubbing: true,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0,
-                        vertical: 8.0,
-                      ),
-                      colors: const VideoProgressColors(
-                        playedColor: Colors.red,
-                        bufferedColor: Colors.white24,
-                        backgroundColor: Colors.white12,
+                        colors: const VideoProgressColors(
+                          playedColor: Colors.red,
+                          bufferedColor: Colors.white24,
+                          backgroundColor: Colors.white12,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
 
-          // Loading indicator when buffering
-          if (_controller.value.isBuffering)
-            const Center(
-              child: CircularProgressIndicator(
-                color: Colors.white,
+            // Loading indicator when buffering
+            if (_controller.value.isBuffering)
+              const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
